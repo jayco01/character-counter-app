@@ -1,64 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Character counter by Jayco01</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <title>Character Counter by Jayco01</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="header-icons">
-      <picture class="logo-wrapper">
-        <img src="" class="logo" alt="">
-      </picture>
-      <picture class="mode-icon-wrapper">
-        <img src="" class="mode-icon" alt="">
-      </picture>
+  <header class="header">
+    <div class="header__content">
+      <img src="./assets/images/logo-dark-theme.svg" alt="Character Counter logo" class="logo" />
+      <button class="theme-toggle" aria-label="Toggle light/dark mode">
+        <img src="./assets/images/icon-sun.svg" alt="" />
+      </button>
     </div>
-    <h1 class="title">Analyze your text in real-time.</h1>
+    <h1 class="header__title">Analyze your text in real-time.</h1>
   </header>
-  <main>
-    <section class="input-area">
-      <div class="textarea-wrapper">
-        <textarea name="" id="" placeholder=" Start typing here… (or paste your text)"></textarea>
-      </div>
-      <div>
-        <div class="checkbox-group">
-          <label>
-            <input type="checkbox" id="exclude-spaces" />
-            Exclude Spaces
-          </label>
-        
-          <label>
-            <input type="checkbox" id="set-character-limit" />
-            Set Character Limit
-          </label>
+
+  <main class="main">
+    <!-- Text Input Section -->
+    <section class="input-section">
+      <label for="text-input" class="visually-hidden">Text input area</label>
+      <textarea id="text-input" placeholder="Start typing here… (or paste your text)" rows="8"></textarea>
+
+      <div class="settings">
+        <div class="setting">
+          <input type="checkbox" id="exclude-spaces" />
+          <label for="exclude-spaces">Exclude Spaces</label>
         </div>
-        <p class="reding-time"> Approx. reading time: <span class="reading-time-counter"></span> minutes</p>
-      </div>      
-    </section>
-    <section class="stats-wrapper">
-      <div class="total-wrapper">
-        <!-- Insert number -->
-        <p class="total__text">Total Characters</p>
+
+        <div class="setting">
+          <input type="checkbox" id="set-char-limit" />
+          <label for="set-char-limit">Set Character Limit</label>
+          <input type="number" id="char-limit" class="char-limit-input" placeholder="e.g. 200" />
+        </div>
       </div>
-      <div class="word-count-wrapper">
-        <!-- Insert number -->
-        <p class="word__text">Word Count</p>
+
+      <p class="reading-time">Approx. reading time: <span id="reading-time">0</span> minute(s)</p>
+      <p id="char-limit-warning" class="warning hidden">
+        ⚠️ Limit reached! Your text exceeds <span id="limit-value">0</span> characters.
+      </p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" aria-label="Text Statistics">
+      <div class="stat">
+        <p class="stat__value" id="char-count">0</p>
+        <p class="stat__label">Total Characters</p>
       </div>
-      <div class="sentence-count-wrapper">
-        <!-- Insert number -->
-        <p class="sentence__text">Sentence Count</p>
+      <div class="stat">
+        <p class="stat__value" id="word-count">0</p>
+        <p class="stat__label">Word Count</p>
+      </div>
+      <div class="stat">
+        <p class="stat__value" id="sentence-count">0</p>
+        <p class="stat__label">Sentence Count</p>
       </div>
     </section>
-    <section class="letter-density-wrapper">
-      <h2 class="letter-density-title">Letter Density</h2>
-      <p class="letter-density-empty">No characters found. Start typing to see letter density.</p>
+
+    <!-- Letter Density -->
+    <section class="density-section">
+      <h2 class="density-title">Letter Density</h2>
+      <p class="density-empty" id="density-empty">No characters found. Start typing to see letter density.</p>
+      <div id="letter-density-output" class="density-output"></div>
+      <button id="toggle-density" class="toggle-density hidden" aria-expanded="false">See More</button>
     </section>
-    
   </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
