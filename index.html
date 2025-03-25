@@ -6,30 +6,59 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
-  <title>Frontend Mentor | Character counter</title>
+  <title>Character counter by Jayco01</title>
 </head>
 <body>
-
-  Analyze your text in real-time.
-
-  Start typing here… (or paste your text)
-
-  Exclude Spaces
-  Set Character Limit
-
-  Approx. reading time: <!-- Insert number --> minutes
-
-  <!-- Insert number -->
-  Total Characters
-
-  <!-- Insert number -->
-  Word Count
-
-  <!-- Insert number -->
-  Sentence Count
-
-  Letter Density
-  No characters found. Start typing to see letter density.
-
+  <header>
+    <div class="header-icons">
+      <picture class="logo-wrapper">
+        <img src="" class="logo" alt="">
+      </picture>
+      <picture class="mode-icon-wrapper">
+        <img src="" class="mode-icon" alt="">
+      </picture>
+    </div>
+    <h1 class="title">Analyze your text in real-time.</h1>
+  </header>
+  <main>
+    <section class="input-area">
+      <div class="textarea-wrapper">
+        <textarea name="" id="" placeholder=" Start typing here… (or paste your text)"></textarea>
+      </div>
+      <div>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="exclude-spaces" />
+            Exclude Spaces
+          </label>
+        
+          <label>
+            <input type="checkbox" id="set-character-limit" />
+            Set Character Limit
+          </label>
+        </div>
+        <p class="reding-time"> Approx. reading time: <span class="reading-time-counter"></span> minutes</p>
+      </div>      
+    </section>
+    <section class="stats-wrapper">
+      <div class="total-wrapper">
+        <!-- Insert number -->
+        <p class="total__text">Total Characters</p>
+      </div>
+      <div class="word-count-wrapper">
+        <!-- Insert number -->
+        <p class="word__text">Word Count</p>
+      </div>
+      <div class="sentence-count-wrapper">
+        <!-- Insert number -->
+        <p class="sentence__text">Sentence Count</p>
+      </div>
+    </section>
+    <section class="letter-density-wrapper">
+      <h2 class="letter-density-title">Letter Density</h2>
+      <p class="letter-density-empty">No characters found. Start typing to see letter density.</p>
+    </section>
+    
+  </main>
 </body>
 </html>
