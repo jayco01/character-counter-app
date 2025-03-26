@@ -1,0 +1,261 @@
+/*  ==========================
+    CSS RESET
+    ==========================  */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/*  ==========================
+    My CSS
+    ==========================  */
+
+/* .hidden {
+  display: none !important;
+} */
+
+:root {
+  /*  NEUTRALS  */
+  --clr-neutral900:#12131A;
+  --clr-neutral800:#21222C;
+  --clr-neutral700:#2A2B37;
+  --clr-neutral600:#404254;
+  --clr-neutral200:#E4E4EF;
+  --clr-neutral100:#F2F2F7;
+  --clr-neutral0:#FFFFFF;
+
+  /*  PURPLE  */
+  --clr-blue400:#D3A0FA;
+  --clr-blue500:#C27CF8;
+
+  /*  YELLOW  */
+  --clr-yellow500:#FF9F00;
+
+  /*  ORANGE  */
+  --clr-orange500: #FE8159;
+  --clr-orange800: #DA3701;
+
+}
+
+* {
+  font-family: "DM Sans",sans-serif;
+  color: var(--clr-neutral200);
+}
+
+body {
+  background-color: var(--clr-neutral900);
+  padding: 1rem;
+}
+
+body.light-mode {
+  --clr-neutral0:#FFFFFF;
+  --clr-neutral900:#12131A;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+  
+.header__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 1rem 0;
+}
+
+.theme-toggle {
+  background-color: var(--clr-neutral700);
+  border: none;
+}
+
+.header__title {
+  color: var(--clr-neutral0);
+  font-size: 2.5rem;
+  margin: 2.5rem 0;
+}
+
+.input-section {
+  min-height: 18.938rem;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.input-section textarea {
+  background-color: var(--clr-neutral800);
+  width: 100%;
+  min-height: 12.5rem;
+  border-radius: 1rem;
+  /* margin-bottom: 1rem; */
+}
+
+.input-section textarea::placeholder {
+  color: var(--clr-neutra700);
+}
+
+.warning-wrapper {
+  display: flex;
+  gap:0.5rem;
+}
+
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.char-limit-input {
+background-color: var(--clr-neutral600);
+width: 3.438rem;
+margin: 0;
+}
+
+.char-limit-input::placeholder {
+  color: var(--clr-neutral0);
+}
+
+.char-limit-input {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.char-limit-input::-webkit-inner-spin-button,
+.char-limit-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;  /* Chrome, Safari, Edge */
+  margin: 0;
+}
+
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.char-count {
+  background: var(--clr-blue400) url(assets/images/pattern-character-count.svg) no-repeat;
+  background-position: right;
+  background-size: contain;
+  min-height: 8.125rem;
+  padding: 1.25rem;
+}
+
+.word-count {
+  background: var(--clr-yellow500) url(assets/images/pattern-word-count.svg) no-repeat;
+  background-position: right;
+  background-size: contain;
+  min-height: 8.125rem;
+  padding: 1.25rem;
+}
+
+.sentence-count {
+  background: var(--clr-orange500) url(assets/images/pattern-sentence-count.svg) no-repeat;
+  background-position: right;
+  background-size: contain;
+  min-height: 8.125rem;
+  padding: 1.25rem;
+}
+
+.stat__value {
+  color: var(--clr-neutral900);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.stat__label {
+  color: var(--clr-neutral900);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.toggle-density {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}

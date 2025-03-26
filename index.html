@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
   <title>Character Counter by Jayco01</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -23,37 +26,41 @@
     <section class="input-section">
       <label for="text-input" class="visually-hidden">Text input area</label>
       <textarea id="text-input" placeholder="Start typing here… (or paste your text)" rows="8"></textarea>
-
-      <div class="settings">
-        <div class="setting">
-          <input type="checkbox" id="exclude-spaces" />
-          <label for="exclude-spaces">Exclude Spaces</label>
-        </div>
-
-        <div class="setting">
-          <input type="checkbox" id="set-char-limit" />
-          <label for="set-char-limit">Set Character Limit</label>
-          <input type="number" id="char-limit" class="char-limit-input" placeholder="e.g. 200" />
-        </div>
+      <div class="warning-wrapper  hidden">
+        <img src="assets/images/icon-info.svg" alt="">
+        <p id="char-limit-warning" class="warning">
+          Limit reached! Your text exceeds <span id="limit-value">0</span> characters.
+        </p>
       </div>
+      <div class="settings-wrapper">
+        <div class="settings">
+          <div class="setting">
+            <input type="checkbox" id="exclude-spaces" />
+            <label for="exclude-spaces">Exclude Spaces</label>
+          </div>
 
-      <p class="reading-time">Approx. reading time: <span id="reading-time">0</span> minute(s)</p>
-      <p id="char-limit-warning" class="warning hidden">
-        ⚠️ Limit reached! Your text exceeds <span id="limit-value">0</span> characters.
-      </p>
+          <div class="setting">
+            <input type="checkbox" id="set-char-limit" />
+            <label for="set-char-limit">Set Character Limit</label>
+            <input type="number" id="char-limit" class="char-limit-input" placeholder="e.g. 200" />
+          </div>
+        </div>
+
+        <p class="reading-time">Approx. reading time: <span id="reading-time">0</span> minute(s)</p>
+      </div>
     </section>
 
     <!-- Stats Section -->
     <section class="stats-section" aria-label="Text Statistics">
-      <div class="stat">
+      <div class="stat char-count">
         <p class="stat__value" id="char-count">0</p>
         <p class="stat__label">Total Characters</p>
       </div>
-      <div class="stat">
+      <div class="stat word-count">
         <p class="stat__value" id="word-count">0</p>
         <p class="stat__label">Word Count</p>
       </div>
-      <div class="stat">
+      <div class="stat sentence-count">
         <p class="stat__value" id="sentence-count">0</p>
         <p class="stat__label">Sentence Count</p>
       </div>
