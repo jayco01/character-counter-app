@@ -81,9 +81,9 @@ textarea:not([rows]) {
     My CSS
     ==========================  */
 
-/* .hidden {
+.hidden {
   display: none !important;
-} */
+}
 
 :root {
   /*  NEUTRALS  */

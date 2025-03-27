@@ -1,18 +1,23 @@
 const textArea = document.getElementById("text-input")
 const characterCounter = document.getElementById("char-count");
 const wordCounter = document.getElementById("word-count");
-const sentenceCounter = document.getElementById("sentence-count")
+const sentenceCounter = document.getElementById("sentence-count");
+const characterLimitInput = document.getElementById("char-limit")
+const characterLimitCheckbox = document.getElementById("set-char-limit")
+
+const warningWrapper = document.getElementById("warning-wrapper");
+const limitValue = document.getElementById("limit-value");
 
 
-function CountCharacters() {
+function countCharacters() {
   characterCounter.textContent = textArea.value.length;
 // if exculeSpaces
 }
 
-textArea.addEventListener("keyup", CountCharacters)
+textArea.addEventListener("keyup", countCharacters)
 
 
-function CountWords() {
+function countWords() {
   let text = textArea.value;
   let trimmed = text.trim();
 
@@ -22,11 +27,10 @@ function CountWords() {
 
   wordCounter.textContent = words.length
 }
+textArea.addEventListener("keyup", countWords)
 
-textArea.addEventListener("keyup", CountWords)
 
-
-function CountSentences() {
+function countSentences() {
   let text = textArea.value;
   let trimmed = text.trim();
 
@@ -36,5 +40,26 @@ function CountSentences() {
 
   sentenceCounter.textContent = sentences.length
 }
+textArea.addEventListener("keyup", countSentences)
 
-textArea.addEventListener("keyup", CountSentences)
+
+
+function updateCharLimitWarning() {
+  let text = textArea.value;
+  let charLimitNumber = Number(characterLimitInput.value);
+
+  limitValue.textContent = charLimitNumber;
+
+  if (
+    characterLimitCheckbox.checked &&
+    charLimitNumber > 0 &&
+    text.length > charLimitNumber
+  ) {
+    warningWrapper.classList.remove("hidden");
+  } else {
+    warningWrapper.classList.add("hidden");
+  }
+}
+textArea.addEventListener("keyup", updateCharLimitWarning);
+characterLimitInput.addEventListener("input", updateCharLimitWarning);
+
