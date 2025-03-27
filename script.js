@@ -16,7 +16,7 @@ function CountWords() {
   let text = textArea.value;
   let trimmed = text.trim();
 
-  if (trimmed === "") return 0;
+  if (trimmed === "" || text.length === 0) return wordCounter.textContent = 0;
 
   let words = trimmed.split(/\s+/);
 
@@ -30,7 +30,7 @@ function CountSentences() {
   let text = textArea.value;
   let trimmed = text.trim();
 
-  if (trimmed === "") return 0;
+  if (trimmed === "") return sentenceCounter.textContent = 0;
 
   let sentences = trimmed.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
 
