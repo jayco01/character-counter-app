@@ -8,6 +8,8 @@ const characterLimitCheckbox = document.getElementById("set-char-limit")
 const warningWrapper = document.getElementById("warning-wrapper");
 const limitValue = document.getElementById("limit-value");
 
+const readingTime = document.getElementById("reading-time")
+
 
 function countCharacters() {
   characterCounter.textContent = textArea.value.length;
@@ -63,3 +65,20 @@ function updateCharLimitWarning() {
 textArea.addEventListener("keyup", updateCharLimitWarning);
 characterLimitInput.addEventListener("input", updateCharLimitWarning);
 
+
+function estimateReadingTime(text) {
+  let charactersPerMinute = 1000; //
+  let characterCount = text.length;
+
+  let minutes =  characterCount / charactersPerMinute;
+
+  if (minutes < 1){
+    minutes =  "<1";
+  } else {
+    minutes = Math.ceil(minutes);
+  }
+  return minutes
+}
+textArea.addEventListener("keyup", function() {
+  readingTime.textContent = estimateReadingTime(textArea.value)
+});
