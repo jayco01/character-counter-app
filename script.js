@@ -10,6 +10,40 @@ const limitValue = document.getElementById("limit-value");
 
 const readingTime = document.getElementById("reading-time")
 
+const body = document.querySelector(".body")
+const toggleButton = document.querySelector(".theme-toggle")
+const toggleIcon = document.querySelector(".toggle-icon")
+const headerTitle = document.querySelector(".header__title")
+const logo = document.querySelector(".logo")
+
+
+
+function changeTheme() {
+  body.classList.toggle("light-mode");
+
+  if (body.classList.contains("light-mode")) {
+    logo.setAttribute("src", "./assets/images/logo-light-theme.svg");
+    toggleIcon.setAttribute("src", "./assets/images/icon-moon.svg");
+    headerTitle.style.color = "#12131A";
+    toggleButton.style.backgroundColor = "#E4E4EF";
+    textArea.style.backgroundColor = "#E4E4EF";
+    textArea.style.color = "#12131A";
+    body.style.color = "#12131A";
+    characterLimitInput.style.color = "#12131A";
+ 
+  } else {
+    logo.setAttribute("src", "./assets/images/logo-dark-theme.svg");
+    toggleIcon.setAttribute("src", "./assets/images/icon-sun.svg");
+    headerTitle.style.color = "#FFFFFF";
+    toggleButton.style.background = "#2A2B37";
+    textArea.style.backgroundColor = "#21222C";
+    textArea.style.color = "#E4E4EF";
+    body.style.color = "#E4E4EF";
+    characterLimitInput.style.color = "#F2F2F7";
+  }
+}
+toggleButton.addEventListener("click", changeTheme)
+
 
 function countCharacters() {
   characterCounter.textContent = textArea.value.length;

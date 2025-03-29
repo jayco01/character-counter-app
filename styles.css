@@ -110,17 +110,18 @@ textarea:not([rows]) {
 
 * {
   font-family: "DM Sans",sans-serif;
-  color: var(--clr-neutral200);
+  /* color: var(--clr-neutral200); */
 }
 
 body {
   background-color: var(--clr-neutral900);
   padding: 1rem;
+  color: var(--clr-neutral200);
 }
 
 body.light-mode {
-  --clr-neutral0:#FFFFFF;
-  --clr-neutral900:#12131A;
+  background-color: var(--clr-neutral0);
+  padding: 1rem;
 }
 
 .visually-hidden {
@@ -168,6 +169,7 @@ body.light-mode {
   width: 100%;
   min-height: 12.5rem;
   border-radius: 1rem;
+  color: var(--clr-neutral200);
   /* margin-bottom: 1rem; */
 }
 
@@ -193,9 +195,12 @@ body.light-mode {
 }
 
 .char-limit-input {
-background-color: var(--clr-neutral600);
+background-color: transparent;
 width: 3.438rem;
 margin: 0;
+border-radius: 6px;
+height: 100%;
+color: #F2F2F7;
 }
 
 .char-limit-input::placeholder {
