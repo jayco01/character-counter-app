@@ -285,3 +285,10 @@ margin: 0;
     flex-direction: row;
   }
 }
+
+@media (min-width: 1080px) {
+  body {
+    max-width: 61.875rem;
+    margin: auto;
+  }
+}
