@@ -153,6 +153,7 @@ body.light-mode {
   color: var(--clr-neutral0);
   font-size: 2.5rem;
   margin: 2.5rem 0;
+  text-align: center;
 }
 
 .input-section {
@@ -240,6 +241,11 @@ margin: 0;
   padding: 1.25rem;
 }
 
+.stat {
+  border-radius: 0.75rem;
+  width: 100%;
+}
+
 .stat__value {
   color: var(--clr-neutral900);
   font-size: 2.5rem;
@@ -258,4 +264,23 @@ margin: 0;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+}
+
+@media (min-width: 768px) and (max-width: 1079px) {
+  .input-section {
+    min-height: auto;
+  }
+
+  .stats-section {
+    flex-direction: row;
+  }
+
+  .settings-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .settings {
+    flex-direction: row;
+  }
 }
