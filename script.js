@@ -16,6 +16,7 @@ const toggleIcon = document.querySelector(".toggle-icon")
 const headerTitle = document.querySelector(".header__title")
 const logo = document.querySelector(".logo")
 
+const excludeSpacesCheckbox = document.getElementById("exclude-spaces")
 
 
 
@@ -56,8 +57,11 @@ toggleButton.addEventListener("click", changeTheme)
 
 
 function countCharacters() {
-  characterCounter.textContent = textArea.value.length;
-// if exculeSpaces
+ let text = textArea.value
+  if (excludeSpacesCheckbox.checked) {
+    text = text.replace(/\s/g, "");
+    }
+  characterCounter.textContent = text.length;
 }
 
 textArea.addEventListener("keyup", countCharacters)
@@ -65,6 +69,7 @@ textArea.addEventListener("keyup", countCharacters)
 
 function countWords() {
   let text = textArea.value;
+
   let trimmed = text.trim();
 
   if (trimmed === "" || text.length === 0) return wordCounter.textContent = 0;
