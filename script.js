@@ -18,6 +18,16 @@ const logo = document.querySelector(".logo")
 
 
 
+
+function hideCharacterLimit() {
+  if (characterLimitCheckbox.checked) {
+  characterLimitInput.classList.remove("hidden");
+}else {
+  characterLimitInput.classList.add("hidden");
+}}
+characterLimitCheckbox.addEventListener("input", hideCharacterLimit)
+
+
 function changeTheme() {
   body.classList.toggle("light-mode");
 

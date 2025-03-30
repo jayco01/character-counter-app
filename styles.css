@@ -110,7 +110,6 @@ textarea:not([rows]) {
 
 * {
   font-family: "DM Sans",sans-serif;
-  /* color: var(--clr-neutral200); */
 }
 
 body {
