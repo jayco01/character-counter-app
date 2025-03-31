@@ -15,6 +15,7 @@ const logo = document.querySelector(".logo")
 const excludeSpacesCheckbox = document.getElementById("exclude-spaces")
 const densityOutput = document.querySelector(".density-output")
 const densityEmpty = document.querySelector(".density-empty")
+const toggleDensityButton = document.getElementById("toggle-density");
 
 function hiddeDensityEmpty() {
 if (textArea.value.length != "") {
@@ -55,6 +56,9 @@ function calculateLetterDensity(text) {
   return sortedDensity;
 }
 
+
+let isExpanded = false; // Tracks if the "See More" button is toggled
+
 function displayLetterDensity() {
   const text = textArea.value.toLowerCase();
   const letterCount = {};
@@ -84,12 +88,14 @@ function displayLetterDensity() {
     return b[1] - a[1];
   });
 
-  sortedDensity.forEach(function(letterData) {
+  // Determine how many items to display
+  const visibleCount = isExpanded ? sortedDensity.length : 5;
+
+  sortedDensity.slice(0, visibleCount).forEach(function(letterData) {
     const letter = letterData[0];
     const count = letterData[1];
     const percentage = ((count / totalLetters) * 100).toFixed(2);
 
-   
     const item = document.createElement("div");
     item.classList.add("density-item");
     item.style.display = "flex";
@@ -97,13 +103,11 @@ function displayLetterDensity() {
     item.style.justifyContent = "space-between";
     item.style.marginBottom = "0.5rem";
 
-    
     const letterLabel = document.createElement("span");
     letterLabel.classList.add("density-letter");
     letterLabel.textContent = letter.toUpperCase();
     letterLabel.style.marginRight = "1rem";
 
-   
     const barContainer = document.createElement("div");
     barContainer.classList.add("density-bar");
     barContainer.style.width = "75%";  
@@ -125,7 +129,6 @@ function displayLetterDensity() {
     progressBar.style.backgroundColor = "var(--clr-blue500)";
     progressBar.style.transition = "width 0.2s ease";
 
-
     const countLabel = document.createElement("span");
     countLabel.classList.add("density-count");
     countLabel.textContent = count + " (" + percentage + "%)";
@@ -139,9 +142,21 @@ function displayLetterDensity() {
 
     densityOutput.appendChild(item);
   });
+
+  // Show/Hide the "See More" button based on available items
+  if (sortedDensity.length > 5) {
+    toggleDensityButton.classList.remove("hidden");
+    toggleDensityButton.textContent = isExpanded ? "See Less" : "See More";
+  } else {
+    toggleDensityButton.classList.add("hidden");
+  }
 }
 
-textArea.addEventListener("keyup", displayLetterDensity);
+toggleDensityButton.addEventListener("click", function() {
+  isExpanded = !isExpanded;
+  displayLetterDensity();
+});
+
 
 
 function hideCharacterLimit() {
@@ -179,6 +194,7 @@ function changeTheme() {
     textArea.style.color = "#12131A";
     body.style.color = "#12131A";
     characterLimitInput.style.color = "#12131A";
+    toggleDensityButton.style.color = "var(--clr-neutral900)"
  
   } else {
     logo.setAttribute("src", "./assets/images/logo-dark-theme.svg");
@@ -189,6 +205,7 @@ function changeTheme() {
     textArea.style.color = "#E4E4EF";
     body.style.color = "#E4E4EF";
     characterLimitInput.style.color = "#F2F2F7";
+    toggleDensityButton.style.color = "var(--clr-neutral200)"
   }
 }
 textArea.addEventListener("keyup", function() {

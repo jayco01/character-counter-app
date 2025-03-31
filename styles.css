@@ -275,6 +275,7 @@ color: #F2F2F7;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  color: var(--clr-neutral200);
 }
 
 
