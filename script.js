@@ -110,7 +110,7 @@ function displayLetterDensity() {
 
     const barContainer = document.createElement("div");
     barContainer.classList.add("density-bar");
-    barContainer.style.width = "75%";  
+    barContainer.style.width = "100%";  
     barContainer.style.height = "10px";
     barContainer.style.backgroundColor = "var(--clr-neutral100)";
     barContainer.style.borderRadius = "0.75rem";
@@ -131,6 +131,10 @@ function displayLetterDensity() {
 
     const countLabel = document.createElement("span");
     countLabel.classList.add("density-count");
+    countLabel.style.display = "flex";
+    countLabel.style.width = "7rem"
+    countLabel.style.justifyContent = "flex-end"
+    countLabel.style.flexDirection = "row";
     countLabel.textContent = count + " (" + percentage + "%)";
     countLabel.style.marginLeft = "0.5rem";
     countLabel.style.color = "var(--clr-neutral0)";
