@@ -210,6 +210,7 @@ function countCharacters() {
   characterCounter.textContent = text.length;
 }
 textArea.addEventListener("keyup", countCharacters)
+excludeSpacesCheckbox.addEventListener("change", countCharacters)
 
 
 function countWords() {
