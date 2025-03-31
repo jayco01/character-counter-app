@@ -27,36 +27,6 @@ if (textArea.value.length != "") {
 textArea.addEventListener("keyup",hiddeDensityEmpty)
 
 
-function calculateLetterDensity(text) {
-  const letterCount = {};
-  const totalLetters = text.length;
-
-  for (let char of text) {
-    char = char.toLowerCase();
-    if (char.match(/[a-z]/)) {
-      if (letterCount[char] === undefined) {
-        letterCount[char] = 1; // Initialize count to 1 if not found in the textarea
-      } else {
-        letterCount[char] += 1; // Increment the count if already exists
-      }
-    }
-  }
-
-  // Convert the letter count object to a list for sorting
-  const sortedDensity = [];
-  for (let char in letterCount) {
-    sortedDensity.push([char, letterCount[char]]);
-  }
-
-  // Sort the array by the count in descending order
-  sortedDensity.sort(function(a, b) {
-    return b[1] - a[1];
-  });
-
-  return sortedDensity;
-}
-
-
 let isExpanded = false; // Tracks if the "See More" button is toggled
 
 function displayLetterDensity() {
@@ -192,23 +162,23 @@ function changeTheme() {
   if (body.classList.contains("light-mode")) {
     logo.setAttribute("src", "./assets/images/logo-light-theme.svg");
     toggleIcon.setAttribute("src", "./assets/images/icon-moon.svg");
-    headerTitle.style.color = "#12131A";
-    toggleButton.style.backgroundColor = "#E4E4EF";
-    textArea.style.backgroundColor = "#E4E4EF";
-    textArea.style.color = "#12131A";
-    body.style.color = "#12131A";
-    characterLimitInput.style.color = "#12131A";
+    headerTitle.style.color = "var(--clr-neutral900)";
+    toggleButton.style.backgroundColor = "var(--clr-neutral200)";
+    textArea.style.backgroundColor = "var(--clr-neutral200)";
+    textArea.style.color = "var(--clr-neutral900)";
+    body.style.color = "var(--clr-neutral900)";
+    characterLimitInput.style.color = "var(--clr-neutral900)";
     toggleDensityButton.style.color = "var(--clr-neutral900)"
  
   } else {
     logo.setAttribute("src", "./assets/images/logo-dark-theme.svg");
     toggleIcon.setAttribute("src", "./assets/images/icon-sun.svg");
-    headerTitle.style.color = "#FFFFFF";
-    toggleButton.style.background = "#2A2B37";
-    textArea.style.backgroundColor = "#21222C";
-    textArea.style.color = "#E4E4EF";
-    body.style.color = "#E4E4EF";
-    characterLimitInput.style.color = "#F2F2F7";
+    headerTitle.style.color = "var(--clr-neutral0)";
+    toggleButton.style.background = "var(--clr-neutral700)";
+    textArea.style.backgroundColor = "var(--clr-neutral800)";
+    textArea.style.color = "var(--clr-neutral200)";
+    body.style.color = "var(--clr-neutral200)";
+    characterLimitInput.style.color = "var(--clr-neutral100)";
     toggleDensityButton.style.color = "var(--clr-neutral200)"
   }
 }
