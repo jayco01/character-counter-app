@@ -343,4 +343,21 @@ color: #F2F2F7;
     max-width: 61.875rem;
     margin: auto;
   }
+
+  .input-section {
+    min-height: auto;
+  }
+
+  .stats-section {
+    flex-direction: row;
+  }
+
+  .settings-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .settings {
+    flex-direction: row;
+  }
 }
