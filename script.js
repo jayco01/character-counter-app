@@ -4,20 +4,15 @@ const wordCounter = document.getElementById("word-count");
 const sentenceCounter = document.getElementById("sentence-count");
 const characterLimitInput = document.getElementById("char-limit")
 const characterLimitCheckbox = document.getElementById("set-char-limit")
-
 const warningWrapper = document.getElementById("warning-wrapper");
 const limitValue = document.getElementById("limit-value");
-
 const readingTime = document.getElementById("reading-time")
-
 const body = document.querySelector(".body")
 const toggleButton = document.querySelector(".theme-toggle")
 const toggleIcon = document.querySelector(".toggle-icon")
 const headerTitle = document.querySelector(".header__title")
 const logo = document.querySelector(".logo")
-
 const excludeSpacesCheckbox = document.getElementById("exclude-spaces")
-
 const densityOutput = document.querySelector(".density-output")
 const densityEmpty = document.querySelector(".density-empty")
 

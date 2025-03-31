@@ -147,6 +147,12 @@ body.light-mode {
 .theme-toggle {
   background-color: var(--clr-neutral700);
   border: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  cursor: pointer;
 }
 
 .header__title {
@@ -169,7 +175,6 @@ body.light-mode {
   min-height: 12.5rem;
   border-radius: 1rem;
   color: var(--clr-neutral200);
-  /* margin-bottom: 1rem; */
 }
 
 .input-section textarea::placeholder {
