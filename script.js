@@ -18,6 +18,135 @@ const logo = document.querySelector(".logo")
 
 const excludeSpacesCheckbox = document.getElementById("exclude-spaces")
 
+const densityOutput = document.querySelector(".density-output")
+const densityEmpty = document.querySelector(".density-empty")
+
+function hiddeDensityEmpty() {
+if (textArea.value.length != "") {
+  densityEmpty.classList.add("hidden")
+} else {
+  densityEmpty.classList.remove("hidden")
+}
+}
+textArea.addEventListener("keyup",hiddeDensityEmpty)
+
+
+function calculateLetterDensity(text) {
+  const letterCount = {};
+  const totalLetters = text.length;
+
+  for (let char of text) {
+    char = char.toLowerCase();
+    if (char.match(/[a-z]/)) {
+      if (letterCount[char] === undefined) {
+        letterCount[char] = 1; // Initialize count to 1 if not found in the textarea
+      } else {
+        letterCount[char] += 1; // Increment the count if already exists
+      }
+    }
+  }
+
+  // Convert the letter count object to a list for sorting
+  const sortedDensity = [];
+  for (let char in letterCount) {
+    sortedDensity.push([char, letterCount[char]]);
+  }
+
+  // Sort the array by the count in descending order
+  sortedDensity.sort(function(a, b) {
+    return b[1] - a[1];
+  });
+
+  return sortedDensity;
+}
+
+function displayLetterDensity() {
+  const text = textArea.value.toLowerCase();
+  const letterCount = {};
+  const totalLetters = text.replace(/[^a-z]/g, "").length;
+
+  // Count occurrences of each letter
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (/[a-z]/.test(char)) {
+      if (letterCount[char] === undefined) {
+        letterCount[char] = 1;
+      } else {
+        letterCount[char] += 1;
+      }
+    }
+  }
+
+  const densityOutput = document.getElementById("letter-density-output");
+  densityOutput.innerHTML = ""; // Clear previous output
+
+  const sortedDensity = [];
+  for (let char in letterCount) {
+    sortedDensity.push([char, letterCount[char]]);
+  }
+
+  sortedDensity.sort(function(a, b) {
+    return b[1] - a[1];
+  });
+
+  sortedDensity.forEach(function(letterData) {
+    const letter = letterData[0];
+    const count = letterData[1];
+    const percentage = ((count / totalLetters) * 100).toFixed(2);
+
+   
+    const item = document.createElement("div");
+    item.classList.add("density-item");
+    item.style.display = "flex";
+    item.style.alignItems = "center";
+    item.style.justifyContent = "space-between";
+    item.style.marginBottom = "0.5rem";
+
+    
+    const letterLabel = document.createElement("span");
+    letterLabel.classList.add("density-letter");
+    letterLabel.textContent = letter.toUpperCase();
+    letterLabel.style.marginRight = "1rem";
+
+   
+    const barContainer = document.createElement("div");
+    barContainer.classList.add("density-bar");
+    barContainer.style.width = "75%";  
+    barContainer.style.height = "10px";
+    barContainer.style.backgroundColor = "var(--clr-neutral100)";
+    barContainer.style.borderRadius = "0.75rem";
+    barContainer.style.overflow = "hidden";
+    barContainer.style.position = "relative";
+    barContainer.style.marginRight = "1rem";
+    barContainer.style.display = "flex";
+    barContainer.style.alignItems = "center";
+
+    const progressBar = document.createElement("div");
+    progressBar.classList.add("density-bar-fill");
+
+    const maxPercentage = Math.min(percentage, 90); 
+    progressBar.style.width = maxPercentage + "%";
+    progressBar.style.height = "100%";
+    progressBar.style.backgroundColor = "var(--clr-blue500)";
+    progressBar.style.transition = "width 0.2s ease";
+
+
+    const countLabel = document.createElement("span");
+    countLabel.classList.add("density-count");
+    countLabel.textContent = count + " (" + percentage + "%)";
+    countLabel.style.marginLeft = "0.5rem";
+    countLabel.style.color = "var(--clr-neutral0)";
+
+    barContainer.appendChild(progressBar);
+    item.appendChild(letterLabel);
+    item.appendChild(barContainer);
+    item.appendChild(countLabel);
+
+    densityOutput.appendChild(item);
+  });
+}
+
+textArea.addEventListener("keyup", displayLetterDensity);
 
 
 function hideCharacterLimit() {
@@ -94,7 +223,6 @@ function countSentences() {
 textArea.addEventListener("keyup", countSentences)
 
 
-
 function updateCharLimitWarning() {
   let text = textArea.value;
   let charLimitNumber = Number(characterLimitInput.value);
@@ -131,3 +259,4 @@ function estimateReadingTime(text) {
 textArea.addEventListener("keyup", function() {
   readingTime.textContent = estimateReadingTime(textArea.value)
 });
+

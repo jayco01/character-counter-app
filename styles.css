@@ -271,6 +271,63 @@ color: #F2F2F7;
   align-items: center;
 }
 
+
+.density-output {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Increased gap for better spacing */
+}
+
+
+.density-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  /* background-color: var(--clr-neutral700); */
+}
+
+
+.density-bar {
+  height: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--clr-neutral600);
+  overflow: hidden;
+  width: 60%;
+  margin-left: 1rem;
+}
+
+
+.density-bar-fill {
+  height: 100%;
+  background-color: var(--clr-blue500);
+  transition: width 0.3s ease;
+}
+
+
+.density-letter {
+  font-weight: 700;
+  color: var(--clr-blue400);
+  margin-right: 1rem;
+}
+
+.density-count {
+  color: var(--clr-neutral200);
+  margin-left: 1rem;
+}
+
+/* Animation for density bar fill */
+/* @keyframes fillAnimation {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.density-bar-fill {
+  animation: fillAnimation 0.5s ease-in-out;
+} */
+
 @media (min-width: 768px) and (max-width: 1079px) {
   .input-section {
     min-height: auto;
