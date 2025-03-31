@@ -220,6 +220,7 @@ color: #F2F2F7;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .char-count {
@@ -317,16 +318,6 @@ color: #F2F2F7;
   color: var(--clr-neutral200);
   margin-left: 1rem;
 }
-
-/* Animation for density bar fill */
-/* @keyframes fillAnimation {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.density-bar-fill {
-  animation: fillAnimation 0.5s ease-in-out;
-} */
 
 @media (min-width: 768px) and (max-width: 1079px) {
   .input-section {
