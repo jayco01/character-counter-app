@@ -276,6 +276,7 @@ color: #F2F2F7;
   display: inline-flex;
   align-items: center;
   color: var(--clr-neutral200);
+  font-weight: bold;
 }
 
 
