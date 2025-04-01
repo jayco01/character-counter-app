@@ -18,17 +18,16 @@ const densityEmpty = document.querySelector(".density-empty")
 const toggleDensityButton = document.getElementById("toggle-density");
 
 function hiddeDensityEmpty() {
-if (textArea.value.length != "") {
-  densityEmpty.classList.add("hidden")
-} else {
-  densityEmpty.classList.remove("hidden")
-}
-}
+  if (textArea.value.length != "") {
+    densityEmpty.classList.add("hidden")
+  } else {
+    densityEmpty.classList.remove("hidden")
+  }
+  }
 textArea.addEventListener("keyup",hiddeDensityEmpty)
 
 
 let isExpanded = false; // Tracks if the "See More" button is toggled
-
 function displayLetterDensity() {
   const text = textArea.value.toLowerCase();
   const letterCount = {};
@@ -125,7 +124,6 @@ function displayLetterDensity() {
     toggleDensityButton.classList.add("hidden");
   }
 }
-
 toggleDensityButton.addEventListener("click", function() {
   isExpanded = !isExpanded;
   displayLetterDensity();
@@ -136,9 +134,9 @@ toggleDensityButton.addEventListener("click", function() {
 function hideCharacterLimit() {
   if (characterLimitCheckbox.checked) {
   characterLimitInput.classList.remove("hidden");
-}else {
-  characterLimitInput.classList.add("hidden");
-}}
+  }else {
+    characterLimitInput.classList.add("hidden");
+  }}
 characterLimitCheckbox.addEventListener("input", hideCharacterLimit)
 
 
